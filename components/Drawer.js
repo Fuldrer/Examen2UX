@@ -39,7 +39,7 @@ class DrawerScreen extends Component {
 }
 
 DrawerScreen.propTypes = {
-  navigation: PropTypes.object
-};
+  navigation: PropTypes.any
+}
 
 export default DrawerScreen;
