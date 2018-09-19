@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,FlatList } from 'react-native';
 import Menu from './routes'
 import Icon from "react-native-vector-icons/FontAwesome";
 import { FloatingAction } from "react-native-floating-action";
 import DialogInput from "react-native-dialog-input";
+import List from './List';
 
 const actions = [
   {
@@ -62,6 +63,18 @@ export default class NewTodo extends React.Component {
   render() {
     return (
         <View style={{ flex: 1 }}>
+        <FlatList
+        data={this.props.screenProps.todos}
+        renderItem={({ item }) => (
+          <List
+            task={item}
+            toggleCheck={this.props.screenProps.toggleCheck}
+            deleteTask={this.props.screenProps.deleteTask}
+          />
+        )}
+        keyExtractor={(item, index) => item.id}
+        style={{ flex: 1, marginTop: 20, width: "100%" }}
+        />
         <View screenProps={{
             todos: this.state.todos,
             toggleCheck: this.toggleCheck,

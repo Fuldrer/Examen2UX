@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Text, View,  Button,FlatList,AsyncStorage,TextInput,Keyboard,StyleSheet} from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import { Header } from "react-native-elements";
-import ListItem from "./List";
+import List from "./List";
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -26,19 +26,19 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <FlatList
-          data={this.props.todos}
-          renderItem={({ item }) => (
-            <ListItem
-              task={item}
-              toggleCheck={this.props.screenProps.toggleCheck}
-              deleteTask={this.props.screenProps.deleteTask}
-            />
-          )}
-          keyExtractor={(item, index) => item.id}
-          style={{ flex: 1, marginTop: 20, width: "100%" }}
-        />
+        data={this.props.screenProps.todos}
+        renderItem={({ item }) => (
+          <List
+            task={item}
+            toggleCheck={this.props.screenProps.toggleCheck}
+            deleteTask={this.props.screenProps.deleteTask}
+          />
+        )}
+        keyExtractor={(item, index) => item.id}
+        style={{ flex: 1, marginTop: 20, width: "100%" }}
+     />
       </View>
     );
   }
