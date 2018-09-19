@@ -20,7 +20,7 @@ class DrawerScreen extends Component {
         <ScrollView>
           <View>
             <View style={styles.menuItem}>
-              <Text onPress={this.navigateToScreen('Home')}>
+              <Text onPress={this.navigateToScreen('NewToDo')}>
               New To Do
               </Text>
             </View>

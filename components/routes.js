@@ -7,6 +7,8 @@ import HomeScreen from './Home'
 import DrawerScreen from './Drawer'
 import DoneScreen from './Done'
 import ListItem from "./List";
+import DialogInput from "react-native-dialog-input";
+import NewToDo from './NewTodo';
 
 const DrawerNavigator = createDrawerNavigator({
     Home:{
@@ -14,6 +16,9 @@ const DrawerNavigator = createDrawerNavigator({
     },
     Done:{
         screen: DoneScreen
+    },
+    NewToDo:{
+        screen:NewToDo
     }
 },{
     initialRouteName: 'Home',
@@ -41,12 +46,22 @@ const StackNavigator = createStackNavigator({
         <TouchableOpacity  onPress={() => {navigation.dispatch(DrawerActions.toggleDrawer())} }>
             <MenuImage style="styles.bar" navigation={navigation}/>
         </TouchableOpacity>,
-        headerRight:
+        /*headerRight:
         <Icon.Button
         name="plus"
         size={30}
         backgroundColor="transparent"
-        onPress={() => this.handleAdd(true)}/>,
+        onPress={() => <DialogInput
+            isDialogVisible={this.state.dialog}
+            title={"Insert Task"}
+            hintInput={"Write Task Name"}
+            submitInput={inputText => {
+              this.sendInput(inputText);
+            }}
+            closeDialog={() => {
+              this.showDialog(false);
+            }}
+          />}/>*/
         headerStyle: {
             backgroundColor: '#333',
         },
